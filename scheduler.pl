@@ -37,7 +37,7 @@ schedule(A,B,C) :-
 schedule_errors(A,B,_C,E) :-
     assertz(my_counter(0)),                     % initialize the counter with 0
     findall(Student,(attends(Student,_)),L),    % get all students
-    sort(L,SortedL),                            % sort to remove dupes
+    sort(L,SortedL),                            % sort to remove duplicates
     schedule_errors_aux(A,B,SortedL),           % call the auxiliary predicate
     retract(my_counter(E)), !.                  % get the counter's value
 
@@ -56,11 +56,9 @@ schedule_errors_aux(_,_,[]) :- !.       % return when the list is empty
 %  Secondary auxiliary predicate to update the counter when an error exists.
 schedule_errors_aux2(Week,Courses) :-
     subset(Week,Courses),       % check if a student's course list is a superset of the week's list
-    retract(my_counter(O)),     % pop the value from the global counter
-    N is O+1,                   % increment it by one
-    assertz(my_counter(N)), !.  % push back and return
+    increment_counter(1), !.    % then increase the error by 1
 
-schedule_errors_aux2(_,_).      % alternative prediate if the subset clause fails -- do nothing
+schedule_errors_aux2(_,_).      % alternative predicate if the subset clause fails -- do nothing
 
 %! minimal_schedule_errors(-A:list, -B:list, -C:list, -E:int).
 %  Calculates the schedule with the fewest possible "errors".
