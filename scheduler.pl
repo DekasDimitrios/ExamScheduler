@@ -1,3 +1,9 @@
+% == AUTHORS START == %
+%! Dimitrios Dekas          -  3063
+%! Konstantinos Papakostas  -  3064
+%! Christina Kreza          -  3077
+% == AUTHORS END == %
+
 :- dynamic my_counter/1.    % my_counter(Value:int).
 :- dynamic metrics/2.       % metrics(Score:int, Errors:int)
 :- dynamic program/3.       % program(A:list, B:list, C:list).
