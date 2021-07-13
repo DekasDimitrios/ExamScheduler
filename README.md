@@ -5,7 +5,7 @@ Prolog used to create an examination scheduler.
 ### attends.pl file:
 
 Data base including the initial predicates.
-Each predicate's format (Registration Number, Lessons ID) represents that the student corresponding to the Registration Number is attending the lesson given by the Lessons ID.
+Each predicate's format (Registration Number, Lesson ID) represents that the student corresponding to the Registration Number is attending the lesson given by the Lesson ID.
 
 ### scheduler.pl file:
 
